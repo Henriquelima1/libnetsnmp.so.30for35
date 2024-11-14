@@ -1,9 +1,9 @@
-Package: meu-pacote-deps
+Package: liblinklibnetsnm30to35
 Version: 1.0
 Section: base
 Priority: optional
 Architecture: amd64
 Essential: no
-Maintainer: Seu Nome <seu.email@exemplo.com>
+Maintainer: Henrique Zardin <henrique.zardin@digicon.com.br>
 Description: Pacote para criar link simbólico para libnetsnmpagent.so.35
 

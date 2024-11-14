@@ -1,15 +1,28 @@
 #!/bin/bash
 
-# Encontrar o caminho da biblioteca
-LIB_PATH=$(find /caminho/encontrado -name "libnetsnmpagent.so.*" | head -n 1)
+# Buscar pela biblioteca libnetsnmp.so.* em diretórios comuns
+LIB_NETSNMP_PATH=$(find /lib /usr/lib /lib64 /usr/lib64 -name "libnetsnmp.so.*" | head -n 1)
 
-# Verificar se o caminho foi encontrado
-if [ -n "$LIB_PATH" ]; then
-    # Criar o link simbólico
-    ln -sf "$LIB_PATH" /usr/lib/libnetsnmpagent.so.35
-    echo "Link simbólico criado para libnetsnmpagent.so.35 em /usr/lib"
+# Buscar pela biblioteca libnetsnmpagent.so.* em diretórios comuns
+LIB_NETSNMPAGENT_PATH=$(find /lib /usr/lib /lib64 /usr/lib64 -name "libnetsnmpagent.so.*" | head -n 1)
+
+# Verificar se a biblioteca libnetsnmp.so.* foi encontrada
+if [ -n "$LIB_NETSNMP_PATH" ]; then
+    # Criar o link simbólico para libnetsnmp.so.35
+    ln -sf "$LIB_NETSNMP_PATH" /usr/lib/x86_64-linux-gnu/libnetsnmp.so.35
+    echo "Link simbólico criado para libnetsnmp.so.35 em /usr/lib/x86_64-linux-gnu"
 else
-    echo "Biblioteca libnetsnmpagent.so.* não encontrada no caminho especificado."
+    echo "Biblioteca libnetsnmp.so.* não encontrada no sistema."
+    exit 1
+fi
+
+# Verificar se a biblioteca libnetsnmpagent.so.* foi encontrada
+if [ -n "$LIB_NETSNMPAGENT_PATH" ]; then
+    # Criar o link simbólico para libnetsnmpagent.so.35
+    ln -sf "$LIB_NETSNMPAGENT_PATH" /usr/lib/x86_64-linux-gnu/libnetsnmpagent.so.35
+    echo "Link simbólico criado para libnetsnmpagent.so.35 em /usr/lib/x86_64-linux-gnu"
+else
+    echo "Biblioteca libnetsnmpagent.so.* não encontrada no sistema."
     exit 1
 fi
 
