@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Encontrar o caminho da biblioteca
+LIB_PATH=$(find /caminho/encontrado -name "libnetsnmpagent.so.*" | head -n 1)
+
+# Verificar se o caminho foi encontrado
+if [ -n "$LIB_PATH" ]; then
+    # Criar o link simbólico
+    ln -sf "$LIB_PATH" /usr/lib/libnetsnmpagent.so.35
+    echo "Link simbólico criado para libnetsnmpagent.so.35 em /usr/lib"
+else
+    echo "Biblioteca libnetsnmpagent.so.* não encontrada no caminho especificado."
+    exit 1
+fi
+

@@ -1,0 +1,9 @@
+Package: meu-pacote-deps
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: amd64
+Essential: no
+Maintainer: Seu Nome <seu.email@exemplo.com>
+Description: Pacote para criar link simbólico para libnetsnmpagent.so.35
+
